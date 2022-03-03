@@ -2,6 +2,7 @@ import React from "react";
 
 interface TableProperties {
   columns: string[]
+  actions: string[]
   children: React.ReactNode
 }
 
@@ -18,13 +19,15 @@ export default function Table(properties: TableProperties) {
                   <th
                     key={column}
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-m font-medium text-gray-500 uppercase tracking-wider"
                   >
                     {column}
                   </th>
                 ))}
                 <th scope="col" className="relative px-6 py-3">
-                  <span className="sr-only">Edit</span>
+                  {properties.columns.map((action) => (
+                    <span key={action} className="sr-only">action</span>
+                  ))}
                 </th>
               </tr>
               </thead>
