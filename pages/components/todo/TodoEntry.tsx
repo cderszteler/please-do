@@ -2,9 +2,9 @@ import React from "react";
 import {Entry} from "../Entry";
 
 interface TodoEntryProperties {
-  id: number,
-  author: string,
-  children: string,
+  id: number
+  author: string
+  children: string
   striped?: boolean
 }
 
