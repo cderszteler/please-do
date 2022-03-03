@@ -8,13 +8,14 @@ function MyApp({Component, pageProps}: AppProps) {
   return (
     <React.Fragment>
       <Head>
-        <title>Please do</title>
-        <link rel="icon" href="/favicon.svg"/>
-        <meta name="description" content="You can do stuff here"/>
+        <meta charSet="utf-8" />
+        <meta name="description" content="Do things... Please 🙏"/>
         <meta
           name='viewport'
           content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover'
         />
+        <title>Please do 🙏</title>
+        <link rel="icon" href="/favicon.svg"/>
       </Head>
       <Component {...pageProps} />
     </React.Fragment>
