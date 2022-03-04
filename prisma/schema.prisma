@@ -7,8 +7,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model tasks {
-  id      Int      @id @default(autoincrement())
+model todos {
+  id      Int      @id(map: "tasks_pkey") @default(autoincrement())
   task    String
   author  String
   state   String
