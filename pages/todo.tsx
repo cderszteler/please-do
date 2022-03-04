@@ -17,7 +17,6 @@ interface TodoProperties {
 }
 
 export default function TodoPage(properties: TodoProperties) {
-  properties.todos.map((todo) => console.log("got: " + todo.id))
   return (
     <React.Fragment>
       <Table columns={["Id", "Task", "Author"]} actions={["Finish", "Delete"]}>
