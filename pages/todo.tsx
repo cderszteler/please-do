@@ -18,15 +18,13 @@ interface TodoProperties {
 
 export default function TodoPage(properties: TodoProperties) {
   return (
-    <React.Fragment>
-      <Table columns={["Id", "Task", "Author"]} actions={["Finish", "Delete"]}>
-        {properties.todos.map(todo => (
-          <TodoEntry id={todo.id} author={todo.author} key={todo.id}>
-            {todo.task}
-          </TodoEntry>
-        ))}
-      </Table>
-    </React.Fragment>
+    <Table columns={["Id", "Task", "Author"]} actions={["Finish", "Delete"]}>
+      {properties.todos.map(todo => (
+        <TodoEntry id={todo.id} author={todo.author} key={todo.id}>
+          {todo.task}
+        </TodoEntry>
+      ))}
+    </Table>
   )
 }
 
