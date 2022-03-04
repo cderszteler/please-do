@@ -11,6 +11,6 @@ model todos {
   id      Int      @id(map: "tasks_pkey") @default(autoincrement())
   task    String
   author  String
-  state   String
+  state   String   @default("UNRESOLVED")
   created DateTime @default(now()) @db.Timestamp(6)
 }
