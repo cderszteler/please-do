@@ -1,30 +1,23 @@
 import React from 'react'
-import TodoEntry from "../components/todo/TodoEntry";
-import Table from "../components/Table";
 import {prisma} from "../backend/prisma";
+import TodoTable from "../components/todo/TodoTable";
 
-type TodoState = 'UNRESOLVED' | 'RESOLVED' | 'BACKLOG'
+export type TodoState = 'UNRESOLVED' | 'RESOLVED' | 'BACKLOG'
 
-interface Todo {
+export interface Todo {
   id: number
   task: string
   author: string
   state: TodoState
 }
 
-interface TodoProperties {
+export interface TodoProperties {
   todos: Todo[]
 }
 
 export default function TodoPage(properties: TodoProperties) {
   return (
-    <Table columns={["Id", "Task", "Author"]} actions={["Finish", "Delete"]}>
-      {properties.todos.map(todo => (
-        <TodoEntry id={todo.id} author={todo.author} key={todo.id}>
-          {todo.task}
-        </TodoEntry>
-      ))}
-    </Table>
+    <TodoTable todos={properties.todos}/>
   )
 }
 
