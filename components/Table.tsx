@@ -8,10 +8,10 @@ interface TableProperties {
 
 export default function Table(properties: TableProperties) {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-row min-h-screen justify-center ">
       <div className="overflow-x-auto sm:overflow-x-hidden">
-        <div className="py-2 align-middle inline-block min-w-min max-w-6xl sm:px-6 lg:px-8">
-          <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <div className="py-2 max-w-6xl sm:px-6 lg:px-8 xl:min-w-[72rem]">
+          <div className="shadow border-b border-gray-200 sm:rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
               <tr>
@@ -32,7 +32,7 @@ export default function Table(properties: TableProperties) {
               </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {properties.children}
+              {properties.children}
               </tbody>
             </table>
           </div>
