@@ -1,18 +1,47 @@
-import {TodoProperties} from "../../pages/todo";
-import TodoEntry from "./TodoEntry";
+import React, {useEffect, useState} from "react";
+import {Todo, TodoState} from "../../pages/todo";
 import Table from "../Table";
-import React, {useState} from "react";
+import TodoEntry from "./TodoEntry";
+import LoadingTable from "../LoadingTable";
 
-export default function TodoTable(properties: TodoProperties) {
-  const [todos, setTodos] = useState(properties.todos)
+async function fetchTodos(state?: TodoState): Promise<Todo[]> {
+  const url = `/api/todos?state=${state}`
+  console.log("URL: " + url)
+  const response = await fetch(url)
+  return (await response.json()) as Todo[] || []
+}
 
-  return (
-    <Table columns={["Id", "Task", "Author"]} actions={["Finish", "Delete"]}>
-      {todos.map(todo => (
-        <TodoEntry id={todo.id} author={todo.author} key={todo.id}>
-          {todo.task}
-        </TodoEntry>
-      ))}
-    </Table>
-  )
+function useTodos(state: TodoState)
+  :[Todo[], React.Dispatch<React.SetStateAction<Todo[]>>, boolean]
+{
+  const [todos, setTodos] = useState<Todo[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchTodos(state)
+      .then(todos => {
+        setTodos(todos)
+        setLoading(false)
+      })
+      .catch(() => setLoading(false))
+  }, [state])
+  return [todos, setTodos, loading]
+}
+
+const unresolvedState = 'UNRESOLVED'
+
+export default function TodoTable() {
+  const [todos, setTodos, loading] = useTodos(unresolvedState)
+
+  return loading
+    ? <LoadingTable columns={["Id", "Task", "Author"]}/>
+    : (
+      <Table columns={["Id", "Task", "Author"]} actions={["Finish", "Delete"]}>
+        {todos.map(todo => (
+          <TodoEntry id={todo.id} author={todo.author} key={todo.id}>
+            {todo.task}
+          </TodoEntry>
+        ))}
+      </Table>
+    )
 }
