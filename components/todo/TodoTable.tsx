@@ -68,11 +68,12 @@ export default function TodoTable() {
 
     return (
       <Table columns={["Id", "Task", "Author"]} actions={["Finish", "Delete"]}>
-        {todos.map(todo => (
+        {todos.map((todo, index) => (
           <TodoEntry
             id={todo.id}
             author={todo.author}
             key={todo.id}
+            striped={(index + 1) % 2 == 0}
             onCheck={(todo) => handleInteraction(todo, 'RESOLVED', removeTodo)}
             onDelete={(todo) => handleInteraction(todo, 'BACKLOG', removeTodo)}
           >
