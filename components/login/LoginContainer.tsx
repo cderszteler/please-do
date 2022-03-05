@@ -6,7 +6,7 @@ interface LoginContainerProperties {
 
 export default function LoginContainer(properties: LoginContainerProperties) {
   return (
-    <div className="pt-[25vh] h-screen w-screen bg-gray-100">
+    <div className="h-screen w-screen bg-gray-100 flex items-center justify-center">
       {properties.children}
     </div>
   )
