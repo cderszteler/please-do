@@ -1,6 +1,7 @@
 import React from 'react'
 import {prisma} from "../backend/prisma";
 import TodoTable from "../components/todo/TodoTable";
+import {withPageAuthRequired} from "@auth0/nextjs-auth0";
 
 export type TodoState = 'UNRESOLVED' | 'RESOLVED' | 'BACKLOG'
 
@@ -21,16 +22,19 @@ export default function TodoPage(properties: TodoProperties) {
   )
 }
 
-export async function getServerSideProps() {
-  const todos = await prisma.todos
-    .findMany({
-      where: {
-        state: 'UNRESOLVED'
+export const getServerSideProps = withPageAuthRequired({
+  returnTo: '/',
+  async getServerSideProps() {
+    const todos = await prisma.todos
+      .findMany({
+        where: {
+          state: 'UNRESOLVED'
+        }
+      })
+    return {
+      props: {
+        todos: todos
       }
-    })
-  return {
-    props: {
-      todos: todos
     }
   }
-}
+})
