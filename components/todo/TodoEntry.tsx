@@ -25,10 +25,10 @@ export default function TodoEntry(properties: TodoEntryProperties) {
         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
           <div className={"inline-flex gap-2"}>
             <CheckIcon
-              className={"h-10 w-10 text-gray-500 hover:text-green-500 hover:cursor-pointer hover:-translate-y-1 hover:scale-110 transition ease-in-out delay-100"}
+              className={"h-7 w-7 text-gray-500 hover:text-green-500 hover:cursor-pointer hover:-translate-y-1 hover:scale-110 transition ease-in-out delay-100"}
             />
             <TrashIcon
-              className={"h-10 w-10 text-gray-500 hover:text-red-500 hover:cursor-pointer hover:-translate-y-1 hover:scale-110 transition ease-in-out delay-100"}
+              className={"h-7 w-7 text-gray-500 hover:text-red-500 hover:cursor-pointer hover:-translate-y-1 hover:scale-110 transition ease-in-out delay-100"}
             />
           </div>
         </td>
