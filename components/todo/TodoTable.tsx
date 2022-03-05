@@ -4,6 +4,34 @@ import Table from "../Table";
 import TodoEntry from "./TodoEntry";
 import LoadingTable from "../LoadingTable";
 
+async function updateState(id: number, state: TodoState): Promise<boolean> {
+  const url = `/api/todos?id=${id}`
+  const response = await fetch(
+    url,
+    {
+      method: 'PUT',
+      body: JSON.stringify({state: state})
+    }
+  )
+  return response.ok
+}
+
+function handleInteraction(
+  todo: Todo,
+  state: TodoState,
+  remove: (todo: Todo) => void
+) {
+  updateState(todo.id, state)
+    .then(ok => {
+      if (ok) {
+        remove(todo)
+        return
+      }
+      console.error("Request was not executed successfully")
+    })
+    .catch(error => console.error("Request throw an error", {error}))
+}
+
 async function fetchTodos(state?: TodoState): Promise<Todo[]> {
   const url = `/api/todos?state=${state}`
   const response = await fetch(url)
@@ -45,8 +73,8 @@ export default function TodoTable() {
             id={todo.id}
             author={todo.author}
             key={todo.id}
-            onCheck={removeTodo}
-            onDelete={removeTodo}
+            onCheck={(todo) => handleInteraction(todo, 'RESOLVED', removeTodo)}
+            onDelete={(todo) => handleInteraction(todo, 'BACKLOG', removeTodo)}
           >
             {todo.task}
           </TodoEntry>
