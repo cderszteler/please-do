@@ -6,7 +6,11 @@ const plugins = [
 ]
 
 const nextConfig = {
-  reactStrictMode: true
+  reactStrictMode: true,
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en'
+  }
 }
 
 module.exports = withPlugins(
