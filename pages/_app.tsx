@@ -1,7 +1,8 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type {AppProps} from 'next/app'
 import React from 'react'
 import Head from 'next/head'
+import {UserProvider} from "@auth0/nextjs-auth0";
 
 
 function MyApp({Component, pageProps}: AppProps) {
@@ -17,7 +18,9 @@ function MyApp({Component, pageProps}: AppProps) {
         <title>Please do 🙏</title>
         <link rel="icon" href="/favicon.svg"/>
       </Head>
-      <Component {...pageProps} />
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
     </React.Fragment>
   )
 }
