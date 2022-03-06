@@ -9,7 +9,7 @@ interface TableProperties {
 export default function Table(properties: TableProperties) {
   return (
     <div className="overflow-x-auto sm:overflow-x-hidden">
-      <div className="py-2 max-w-6xl sm:px-6 lg:px-8 xl:min-w-[72rem]">
+      <div className="py-2 max-w-6xl sm:px-6 sm:min-w-[38rem] lg:px-8 lg:min-w-[64rem] xl:min-w-[72rem]">
         <div className="shadow border-b border-gray-200 sm:rounded-lg">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
