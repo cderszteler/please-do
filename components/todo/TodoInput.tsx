@@ -37,7 +37,7 @@ export default function TodoInput() {
     <div
       className="py-2 max-w-6xl sm:px-6 sm:min-w-[38rem] lg:px-8 lg:min-w-[64rem] xl:min-w-[72rem]">
       <div
-        className="shadow border-b border-gray-200 sm:rounded-lg focus:text-gray-700 focus:bg-white focus:border-gray-300 focus:outline-none focus:ring-gray-300"
+        className="bg-white shadow-lg shadow-black rounded sm:rounded-lg focus:text-gray-700 focus:bg-white focus:border-gray-300 focus:outline-none focus:ring-gray-300"
       >
         <form onSubmit={event => {
           create.mutate({
@@ -49,7 +49,7 @@ export default function TodoInput() {
           event.preventDefault()
         }}>
           <textarea
-            className="w-full min-h-[3rem] resize-y border-none border-0 focus:ring-0"
+            className="w-full min-h-[3rem] resize-y border-none border-0 focus:ring-0 rounded sm:rounded-none"
             placeholder="Your task"
             value={value}
             onChange={event => setValue(event.target.value)}
