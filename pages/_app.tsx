@@ -3,7 +3,9 @@ import type {AppProps} from 'next/app'
 import React from 'react'
 import Head from 'next/head'
 import {UserProvider} from "@auth0/nextjs-auth0";
+import {QueryClient, QueryClientProvider} from "react-query";
 
+const queryClient = new QueryClient()
 
 function MyApp({Component, pageProps}: AppProps) {
   return (
@@ -19,7 +21,9 @@ function MyApp({Component, pageProps}: AppProps) {
         <link rel="icon" href="/favicon.svg"/>
       </Head>
       <UserProvider>
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
       </UserProvider>
     </React.Fragment>
   )
