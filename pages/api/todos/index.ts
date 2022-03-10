@@ -62,7 +62,7 @@ const update = authenticated(
   }
 )
 
-interface CreateTodoProperties {
+export interface CreateTodoProperties {
   task: string,
   author: string,
   state: string
