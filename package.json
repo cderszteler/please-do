@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "(if exist .next rd /s /q .next 2>nul) && next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
