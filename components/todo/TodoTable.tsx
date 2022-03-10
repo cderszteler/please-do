@@ -10,13 +10,13 @@ interface UpdateProperties {
   state: TodoState
 }
 
-async function updateState({id, state}: UpdateProperties): Promise<boolean> {
-  const url = `/api/todos?id=${id}`
+async function updateState(properties: UpdateProperties): Promise<boolean> {
+  const url = `/api/todos?id=${properties.id}`
   const response = await fetch(
     url,
     {
       method: 'PUT',
-      body: JSON.stringify({state: state})
+      body: JSON.stringify({state: properties.state})
     }
   )
   return response.ok
