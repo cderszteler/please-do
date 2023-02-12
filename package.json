@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^1.7.0",
+    "@auth0/nextjs-auth0": "^2.2.1",
     "@heroicons/react": "^1.0.6",
     "@prisma/client": "^3.10.0",
     "babel-plugin-superjson-next": "^0.4.3",
